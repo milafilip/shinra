@@ -10,6 +10,10 @@ chat.onMessage((channelname, context, msg, self) => {
 
 chat.onConnect(() => {
   terminal.onUserInput(msg => chat.say(msg))
-  terminal.start(process.stdin, process.stdout, `${chat.getUsername()}: `)
+  terminal.start(`${chat.getUsername()}: `)
 })
-chat.start('jonnyman9', process.env.USERNAME, process.env.TOKEN)
+
+terminal.setup(process.stdin, process.stdout)
+terminal.question('What channel do you want to join? ', (channelname) => {
+  chat.start(channelname, process.env.USERNAME, process.env.TOKEN)
+})

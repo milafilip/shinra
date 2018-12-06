@@ -1,0 +1,26 @@
+{
+  "name": "shinra",
+  "version": "1.0.0",
+  "description": "Command line client for twitch chat.",
+  "main": "index.js",
+  "author": "Jon Keam<jpkeam@gmail.com>(http://jonkeam.com)",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node ./app.js",
+    "lint": "standard"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "colors": "^1.3.2",
+    "dotenv": "^6.1.0",
+    "tmi.js": "^1.2.1"
+  },
+  "standard": {
+    "ignore": [
+      "/ignore"
+    ]
+  }
+}

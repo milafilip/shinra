@@ -6,7 +6,10 @@
   "author": "Jon Keam<jpkeam@gmail.com>(http://jonkeam.com)",
   "license": "MIT",
   "private": false,
-  "keywords": ["twitch", "chat"],
+  "keywords": ["twitch", "chat", "node"],
+  "engines": {
+    "node": "11.4.0"
+  },
   "scripts": {
     "start": "node ./app.js",
     "lint": "standard"

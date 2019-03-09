@@ -3,6 +3,10 @@ const chat = require('./lib/chat')
 const terminal = require('./lib/terminal')
 // const color = require('colors/safe')
 
+const start = (channelname) => {
+  chat.start(channelname, process.env.USERNAME, process.env.TOKEN)
+}
+
 chat.onMessage((channelname, context, msg, self) => {
   if (self) { return }
   terminal.log(`${context.username}: ${msg}`)
@@ -14,6 +18,8 @@ chat.onConnect(() => {
 })
 
 terminal.setup(process.stdin, process.stdout)
-terminal.question('What channel do you want to join? ', (channelname) => {
-  chat.start(channelname, process.env.USERNAME, process.env.TOKEN)
-})
+if (process.env.CHANNEL) {
+  start(process.env.CHANNEL)
+} else {
+  terminal.question('What channel do you want to join? ', start)
+}

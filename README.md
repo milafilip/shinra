@@ -2,8 +2,8 @@
 Command line client for twitch.
 
 ## Prerequisites
-1.  Node v11.4.0
-2.  Yarn v1.12.3 (you can use npm, but instructions below use yarn)
+1.  Node v11.4.0 or greater
+2.  Yarn v1.12.3 or greater (you can use npm, but instructions below use yarn)
 
 ## Installation
 1.  `yarn install`

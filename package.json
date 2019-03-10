@@ -1,6 +1,6 @@
 {
   "name": "shinra",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Command line client for Twitch chat.",
   "main": "index.js",
   "author": "Jon Keam<jpkeam@gmail.com>(http://jonkeam.com)",

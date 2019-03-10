@@ -1,7 +1,8 @@
 require('dotenv').config()
 const chat = require('./lib/chat')
 const terminal = require('./lib/terminal')
-// const color = require('colors/safe')
+const color = require('./lib/color')
+const safeColors = require('colors/safe')
 
 const start = (channelname) => {
   chat.start(channelname, process.env.USERNAME, process.env.TOKEN)
@@ -9,7 +10,10 @@ const start = (channelname) => {
 
 chat.onMessage((channelname, context, msg, self) => {
   if (self) { return }
-  terminal.log(`${context.username}: ${msg}`)
+  const name = context['display-name']
+  const newColor = color.getTerminalColor(context['color'])
+  const colorName = safeColors[newColor](name)
+  terminal.log(`${colorName}: ${msg}`)
 })
 
 chat.onConnect(() => {

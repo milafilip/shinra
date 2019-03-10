@@ -22,3 +22,8 @@ Just run
 yarn start
 ```
 and start chatting!
+
+Or if you prefer no colors:
+```
+yarn start --no-color
+```

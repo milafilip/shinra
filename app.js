@@ -14,7 +14,6 @@ new Promise((resolve, reject) => {
     })
   }
 }).then(channelname => {
-  // constructor (opts = { stdin: null, stdout: null, prompt: null, onUserInput: null }) {
   const username = process.env.USERNAME
   const password = process.env.TOKEN
   new Chat({ channelname, username, password, terminal }).start()

@@ -33,6 +33,11 @@
     "ignore": [
       "/ignore"
     ],
-    "globals": ["test", "expect", "jest"]
+    "globals": ["test", "expect", "jest", "beforeEach", "describe"]
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/env.js"
+    ]
   }
 }

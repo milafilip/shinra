@@ -1,4 +1,7 @@
 # Shinra
+[![Build Status](https://travis-ci.org/jkeam/shinra.svg?branch=master)](https://travis-ci.org/jkeam/shinra)
+[![Coverage Status](https://coveralls.io/repos/github/jkeam/shinra/badge.svg?branch=master)](https://coveralls.io/github/jkeam/shinra?branch=master)
+
 Command line client for twitch.
 
 ## Prerequisites

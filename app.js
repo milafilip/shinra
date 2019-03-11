@@ -1,29 +1,34 @@
 require('dotenv').config()
-const chat = require('./lib/chat')
-const terminal = require('./lib/terminal')
-const color = require('./lib/color')
-const safeColors = require('colors/safe')
+const Chat = require('./lib/chat')
+const Terminal = require('./lib/terminal')
 
-const start = (channelname) => {
-  chat.start(channelname, process.env.USERNAME, process.env.TOKEN)
+const { stdin, stdout } = process
+const terminal = new Terminal({ stdin, stdout })
+
+async function getChannelname () {
+  let channelname = process.env.CHANNEL
+  if (!channelname) {
+    channelname = await terminal.question('What channel do you want to join? ')
+  }
+  return channelname
 }
 
-chat.onMessage((channelname, context, msg, self) => {
-  if (self) { return }
-  const name = context['display-name']
-  const newColor = color.getTerminalColor(context['color'])
-  const colorName = safeColors[newColor](name)
-  terminal.log(`${colorName}: ${msg}`)
-})
+(async () => {
+  const username = process.env.USERNAME
+  const password = process.env.TOKEN
+  if (!username || !password) {
+    console.log('Missing username/password in .env file')
+    return process.exit()
+  }
+  const channelname = await getChannelname()
+  if (!channelname || channelname.trim() === '') {
+    console.log('Missing channelname')
+    return process.exit()
+  }
 
-chat.onConnect(() => {
-  terminal.onUserInput(msg => chat.say(msg))
-  terminal.start(`${chat.getUsername()}: `)
+  const chat = new Chat({ channelname, username, password, terminal })
+  chat.start()
+})().catch(e => {
+  console.error(e)
+  process.exit(1)
 })
-
-terminal.setup(process.stdin, process.stdout)
-if (process.env.CHANNEL) {
-  start(process.env.CHANNEL)
-} else {
-  terminal.question('What channel do you want to join? ', start)
-}

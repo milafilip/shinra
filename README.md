@@ -15,14 +15,12 @@ Command line client for twitch.
 ```
 USERNAME=my_username
 TOKEN=super_secret_token_obtained_from_step_2
-# Optional default channel to connect to:
-# CHANNEL=some_streamer_channel_name
 ```
 
 ## Usage
 Just run
 ```
-yarn start
+yarn start --channel <channel-name>
 ```
 and start chatting!
 
